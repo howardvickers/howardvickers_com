@@ -5,8 +5,8 @@ var app = express()
 
 app.use(express.static('./public'))
 
-
-app.listen(8080)
+// sudo nodemon server.js (if using port 80 rather than 8080)
+app.listen(80)
 
 
 
