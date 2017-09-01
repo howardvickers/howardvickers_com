@@ -28,8 +28,13 @@ finally{
     console.log('this code runs regardless of whether the above code succeeded or failed')
 }
 
-
-
+// ensure that any visitor to the non-https (non-secure) would be redirected to the secure version
+var httpApp = express()
+httpApp.get('/', function(req, res){
+    console.log(req.url)
+    res.redirect('https://howardvickers.com'+ req.url)
+})
+httpApp.listen(80)
 
 
 
