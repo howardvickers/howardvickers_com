@@ -25,7 +25,7 @@ catch(error){
     console.log('could not set up HTTPS')
 }
 finally{
-    console.log('this code runs regardless of whether ')
+    console.log('this code runs regardless of whether the above code succeeded or failed')
 }
 
 
