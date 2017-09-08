@@ -5,8 +5,8 @@ var app = express()
 
 
 // this is needed for the https server... 
-var HTTP = require('http')
-var HTTPS = require('https')
+// var HTTP = require('http')
+var https = require('https')
 
 app.use(express.static('./public'))
 
