@@ -11,29 +11,29 @@ var HTTPS = require('https')
 app.use(express.static('./public'))
 
 // try-catch is for when we're working on the localhost...
-// try {
-//     var httpsConfig = {
-//     key: fs.readFileSync('/etc/letsencrypt/live/howardvickers.com/privkey.pem'),
-//     cert: fs.readFileSync('/etc/letsencrypt/live/howardvickers.com/cert.pem'),
+try {
+    var httpsConfig = {
+    key: fs.readFileSync('/etc/letsencrypt/live/howardvickers.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/howardvickers.com/cert.pem'),
 
-//     // this is needed for the https server... 
-//     }
-//     var httpsServer = https.createServer(httpsConfig, app)
-//     httpsServer.listen(443)}
-// catch(error){
-//     console.log(error)
-//     console.log('could not set up HTTPS')
-// }
-// finally{
-//     console.log('this code runs regardless of whether the above code succeeded or failed')
-// }
+    // this is needed for the https server... 
+    }
+    var httpsServer = https.createServer(httpsConfig, app)
+    httpsServer.listen(443)}
+catch(error){
+    console.log(error)
+    console.log('could not set up HTTPS')
+}
+finally{
+    console.log('this code runs regardless of whether the above code succeeded or failed')
+}
 
 // ensure that any visitor to the non-https (non-secure) would be redirected to the secure version
 // var httpApp = express()
-// httpApp.get('/', function(req, res){
-//     console.log(req.url)
-//     res.redirect('https://howardvickers.com'+ req.url)
-// })
+app.get('/', function(req, res){
+    console.log(req.url)
+    res.redirect('https://howardvickers.com'+ req.url)
+})
 // httpApp.listen(8080)
 
 app.listen(80)
